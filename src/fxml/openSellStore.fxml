@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="CENTER" spacing="10" xmlns="http://javafx.com/javafx/8.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="model.BuyPoint">
+    <Label text="Magasin - Vente" />
+
+
+    <Separator />
+
+    <Label text="Vendre vos récoltes" />
+    <Button text="Vendre Récolte" />
+
+    <Separator />
+
+    <Label fx:id="moneyLabel" text="Argent : 500 pièces" />
+    <Button text="Retour" />
+</VBox>

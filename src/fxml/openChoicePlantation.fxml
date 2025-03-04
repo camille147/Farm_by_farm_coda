@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="controller.FarmController"
+      spacing="10" alignment="CENTER"
+      style="-fx-padding: 20;">
+
+    <Label text="Sélectionne une culture :" />
+    <Button fx:id="wheatButton" text="Blé (B)" onAction="#handleWheatSelection" />
+    <Button fx:id="cornButton" text="Maïs (M)" onAction="#handleCornSelection" />
+    <Button fx:id="appleButton" text="Pomme (P)" onAction="#handleAppleSelection" />
+
+
+</VBox>
