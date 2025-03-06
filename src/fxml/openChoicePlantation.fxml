@@ -5,14 +5,14 @@
 
 <VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
-      fx:controller="controller.FarmController"
+      fx:controller="controller.GameController"
       spacing="10" alignment="CENTER"
       style="-fx-padding: 20;">
 
-    <Label text="Sélectionne une culture :" />
-    <Button fx:id="wheatButton" text="Blé (B)" onAction="#handleWheatSelection" />
-    <Button fx:id="cornButton" text="Maïs (M)" onAction="#handleCornSelection" />
-    <Button fx:id="appleButton" text="Pomme (P)" onAction="#handleAppleSelection" />
+    <Label fx:id="labelSelection" text="Veuillez selc la culture" />
+    <Button fx:id="wheatButton" text="Blé (B)" />
+    <Button fx:id="cornButton" text="Maïs (M)"  />
+    <Button fx:id="appleButton" text="Pomme (P)"  />
 
 
 </VBox>

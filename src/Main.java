@@ -1,4 +1,3 @@
-import controller.GameController;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -17,15 +16,10 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("./fxml/field.fxml"));
-
-
-        Scene scene = new Scene(loader.load());
+        Parent root = loader.load();
 
         Farm farm = new Farm(500);
-
-        GameController controller = loader.getController();
-        controller.setFarm(farm);
-
+        Scene scene = new Scene(root, 600, 600);
         primaryStage.setTitle("JavaFX avec FXML");
         primaryStage.setScene(scene);
         primaryStage.show();
