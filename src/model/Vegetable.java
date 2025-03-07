@@ -38,10 +38,10 @@ public class Vegetable {
         this.quantity = quantity + 1;
     }
 
-    public void lowerQuantity() {
-        if (quantity < 1) {
-            this.quantity -= quantity;
 
+    public void lowerQuantity() {
+        if (this.quantity > 0) {
+            this.quantity -= 1;
         }
     }
 

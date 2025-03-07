@@ -2,23 +2,34 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox alignment="CENTER" spacing="10" xmlns="http://javafx.com/javafx/8.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="model.BuyPoint">
+<VBox alignment="CENTER" spacing="10" xmlns="http://javafx.com/javafx/8.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.FarmController">
     <Label text="Magasin - Achat" />
 
     <Label text="Acheter des graines" />
-    <Button text="Acheter Blé (10 pièces)" />
-    <Button text="Acheter Maïs (15 pièces)" />
-    <Button text="Acheter Carotte (12 pièces)" />
 
-    <Separator />
+    <Label text="Blé 10 pièces" />
+    <Button text="Blé" onAction="#buy"/>
 
-    <Label text="Acheter des animaux" />
-    <Button text="Acheter Vache (10 pièces)" />
-    <Button text="Acheter Cochon (15 pièces)" />
-    <Button text="Acheter Poule (12 pièces)" />
+    <Label text="Mais 12 pièces" />
+    <Button text="Mais" onAction="#buy"/>
 
-    <Separator />
+    <Label text="Banane 7 pièces" />
+    <Button text="Banane" onAction="#buy"/>
 
-    <Label fx:id="moneyLabel" text="Argent : 500 pièces" />
-    <Button text="Retour" />
+    <Label text="Pomme 5 pièces" />
+    <Button text="Pomme" onAction="#buy"/>
+
+    <Label text="Cerise 50 pièces" />
+    <Button text="Cerise" onAction="#buy"/>
+
+    <Label fx:id="moneyLabel" text="" />
+
+<!--    <Separator />-->
+
+<!--    <Label text="Acheter des animaux" />-->
+<!--    <Button text="Acheter Vache (10 pièces)" />-->
+<!--    <Button text="Acheter Cochon (15 pièces)" />-->
+<!--    <Button text="Acheter Poule (12 pièces)" />-->
+
+
 </VBox>

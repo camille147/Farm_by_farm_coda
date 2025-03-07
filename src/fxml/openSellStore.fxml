@@ -2,14 +2,28 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox alignment="CENTER" spacing="10" xmlns="http://javafx.com/javafx/8.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="model.BuyPoint">
+<VBox alignment="CENTER" spacing="10" xmlns="http://javafx.com/javafx/8.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.FarmController">
     <Label text="Magasin - Vente" />
 
 
     <Separator />
 
-    <Label text="Vendre vos récoltes" />
-    <Button text="Vendre Récolte" />
+    <Label text="Blé 15 pièces" />
+    <Button text="Blé" onAction="#sell" />
+
+    <Label text="Mais 17pièces" />
+    <Button text="Mais" onAction="#sell" />
+
+    <Label text="Pomme 10 pièces" />
+    <Button text="Pomme" onAction="#sell"/>
+
+    <Label text="Banane 12 pièces" />
+    <Button text="Banane" onAction="#sell"/>
+
+    <Label text="Cerise 60 pièces" />
+    <Button text="Cerise" onAction="#sell"/>
+
+
 
     <Separator />
 

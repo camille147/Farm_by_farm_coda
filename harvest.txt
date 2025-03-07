@@ -1,4 +1,6 @@
-Wallet:500.0
-Mais : 2
+Wallet:1026.0
+Cerise : 0
+Banane : 3
+Mais : 3
 Pomme : 1
-Blé : 3
+Blé : 2

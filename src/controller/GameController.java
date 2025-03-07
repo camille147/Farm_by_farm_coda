@@ -29,13 +29,6 @@ public class GameController {
 
     @FXML
     private GridPane gridPane;
-//    private final ArrayList<MenuItem> plantedButtons = new ArrayList<>();
-//    private final ArrayList<MenuItem> nothingButtons = new ArrayList<>();
-//    private final ArrayList<MenuItem> finishPlantedButtons = new ArrayList<>();
-
-    //private MenuItem buttonSelected;
-
-
     @FXML
     private void openBuyStore(ActionEvent event) {
         openModalWindow("../fxml/openBuyStore.fxml", "Magasin d'Achat");
@@ -65,12 +58,8 @@ public class GameController {
 
     public void selectButton(ActionEvent event) {
         MenuItem selectedVegetableItem = (MenuItem) event.getSource();
-        //buttonSelected = (MenuItem) event.getSource();
         MenuButton parentMenuButton = (MenuButton) selectedVegetableItem.getParentPopup().getOwnerNode();
-        //System.out.println(parentMenuButton);
-       // parentMenuButton.setText(buttonSelected.getText());
-        //System.out.println(parentMenuButton.getText());
-       // System.out.println(parentMenuButton.setText(buttonSelected.getText()));
+
         String vegetableName = selectedVegetableItem.getText();
 
         if (plantedVegetables.containsKey(selectedVegetableItem)) {
@@ -84,12 +73,6 @@ public class GameController {
             plantedVegetables.put(selectedVegetableItem, vegetableName);
             parentMenuButton.setText("p");
             startGrowthTimer(selectedVegetableItem);
-//            System.out.println("planter");
-//
-//            buttonSelected.setText("Blé");
-//            parentMenuButton.setText("b");
-//
-//            plantVegetable("Blé", buttonSelected);
         }
 
     }
@@ -113,16 +96,6 @@ public class GameController {
 
 
 
-
-//                    String vegetableName = plantedVegetables.get(selectedVegetableItem);
-//                    if (vegetableName != null) {
-//                        farmController.harvestVegetable(vegetableName);
-//                        selectedVegetableItem.setText("recolter");
-//                    }
-//                    plantedButtons.remove(button);
-//                    finishPlantedButtons.add(button);
-//                    button.setText("R");
-//                    System.out.println(vegetableName + " est prêt à être récolté !");
                 })
         );
         growthTimeline.setCycleCount(1);
@@ -142,10 +115,6 @@ public class GameController {
         } else {
             System.out.println(("erreur recolte"));
         }
-//        System.out.println("Récolte en cours...");
-//        finishPlantedButtons.remove(button); // Supprime de la liste des cultures prêtes à récolter
-//        button.setText("n");
-//        nothingButtons.add(button);
 
     }
 

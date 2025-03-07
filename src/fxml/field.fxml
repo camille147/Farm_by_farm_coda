@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.URL?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -29,10 +31,7 @@
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
   </columnConstraints>
   <rowConstraints>
     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -55,55 +54,197 @@
     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <Button fx:id="sellPoint" ellipsisString="Vente" mnemonicParsing="false" onAction="#openSellStore" prefHeight="600.0" prefWidth="600.0" text="Vente" textFill="#d40202" GridPane.columnIndex="4" GridPane.rowIndex="19" />
-      <Button fx:id="buyPoint" ellipsisString="Achat" layoutX="91.0" layoutY="568.0" mnemonicParsing="false" onAction="#openBuyStore" prefHeight="600.0" prefWidth="600.0" text="Achat" textFill="#40890b" GridPane.columnIndex="20" GridPane.rowIndex="19" />
+      <Button fx:id="sellPoint" ellipsisString="Vente" mnemonicParsing="false" onAction="#openSellStore" prefHeight="600.0" prefWidth="600.0" text="Vente" textFill="#d40202" GridPane.columnIndex="4" GridPane.rowIndex="17" />
+      <Button fx:id="buyPoint" ellipsisString="Achat" layoutX="91.0" layoutY="568.0" mnemonicParsing="false" onAction="#openBuyStore" prefHeight="600.0" prefWidth="600.0" text="Achat" textFill="#40890b" GridPane.columnIndex="14" GridPane.rowIndex="17" />
 
 <!--      <Button fx:id="button1" ellipsisString="" mnemonicParsing="false" onAction="#selectButton" prefHeight="600.0" prefWidth="600.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" text="" />-->
 <!--      <Button fx:id="button2" ellipsisString="" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#selectButton" prefHeight="600.0" prefWidth="600.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" text="" GridPane.columnIndex="1" />-->
 <!--      <Button fx:id="button3" ellipsisString="" layoutX="35.0" layoutY="10.0" mnemonicParsing="false" onAction="#selectButton" prefHeight="600.0" prefWidth="600.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" text="" GridPane.rowIndex="1" />-->
 <!--      <Button fx:id="button4" ellipsisString="" layoutX="35.0" layoutY="10.0" mnemonicParsing="false" onAction="#selectButton" prefHeight="600.0" prefWidth="600.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" text="" GridPane.columnIndex="1" GridPane.rowIndex="1" />-->
-      <MenuButton fx:id="button1" mnemonicParsing="false" text="1" GridPane.columnIndex="7" style="-fx-background-color: transparent; -fx-border-color: gray;">
+      <MenuButton fx:id="button1" mnemonicParsing="false" prefHeight="600.0" prefWidth="600.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" GridPane.columnIndex="6" GridPane.rowIndex="1">
         <items>
-          <MenuItem mnemonicParsing="false" text="Blé" onAction="#selectButton"/>
-          <MenuItem mnemonicParsing="false" text="Mais" onAction="#selectButton"/>
+          <MenuItem mnemonicParsing="false" onAction="#selectButton" text="Blé" />
+          <MenuItem mnemonicParsing="false" onAction="#selectButton" text="Mais" />
           <MenuItem mnemonicParsing="false" text="Poule" />
           <MenuItem mnemonicParsing="false" text="Vache" />
-          <MenuItem mnemonicParsing="false" text="Pomme" onAction="#selectButton"/>
-          <MenuItem mnemonicParsing="false" text="Cerise" onAction="#selectButton"/>
+          <MenuItem mnemonicParsing="false" onAction="#selectButton" text="Pomme" />
+          <MenuItem mnemonicParsing="false" onAction="#selectButton" text="Cerise" />
         </items>
+        <stylesheets>
+          <URL value="@style.css" />
+        </stylesheets>
       </MenuButton>
-     <MenuButton fx:id="button4" mnemonicParsing="false" text="" GridPane.rowIndex="1" style="-fx-background-color: transparent; -fx-border-color: gray;">
+     <MenuButton fx:id="button4" mnemonicParsing="false" prefHeight="600.0" prefWidth="600.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" text="" GridPane.rowIndex="1">
        <items>
-         <MenuItem mnemonicParsing="false" text="Blé" onAction="#selectButton"/>
-         <MenuItem mnemonicParsing="false" text="Mais" onAction="#selectButton"/>
+         <MenuItem mnemonicParsing="false" onAction="#selectButton" text="Blé" />
+         <MenuItem mnemonicParsing="false" onAction="#selectButton" text="Mais" />
          <MenuItem mnemonicParsing="false" text="Poule" />
          <MenuItem mnemonicParsing="false" text="Vache" />
-         <MenuItem mnemonicParsing="false" text="Pomme" onAction="#selectButton"/>
-         <MenuItem mnemonicParsing="false" text="Cerise" onAction="#selectButton"/>
+         <MenuItem mnemonicParsing="false" onAction="#selectButton" text="Pomme" />
+         <MenuItem mnemonicParsing="false" onAction="#selectButton" text="Cerise" />
        </items>
+       <stylesheets>
+         <URL value="@style.css" />
+       </stylesheets>
      </MenuButton>
-     <MenuButton fx:id="button2" mnemonicParsing="false" text=""  GridPane.columnIndex="1" style="-fx-background-color: transparent; -fx-border-color: gray;">
+     <MenuButton fx:id="button2" mnemonicParsing="false" prefHeight="600.0" prefWidth="600.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" text="" GridPane.columnIndex="1">
        <items>
-         <MenuItem mnemonicParsing="false" text="Blé" onAction="#selectButton"/>
-         <MenuItem mnemonicParsing="false" text="Mais" onAction="#selectButton"/>
+         <MenuItem mnemonicParsing="false" onAction="#selectButton" text="Blé" />
+         <MenuItem mnemonicParsing="false" onAction="#selectButton" text="Mais" />
          <MenuItem mnemonicParsing="false" text="Poule" />
          <MenuItem mnemonicParsing="false" text="Vache" />
-         <MenuItem mnemonicParsing="false" text="Pomme" onAction="#selectButton"/>
-         <MenuItem mnemonicParsing="false" text="Cerise" onAction="#selectButton"/>
+         <MenuItem mnemonicParsing="false" onAction="#selectButton" text="Pomme" />
+         <MenuItem mnemonicParsing="false" onAction="#selectButton" text="Cerise" />
        </items>
+       <stylesheets>
+         <URL value="@style.css" />
+       </stylesheets>
      </MenuButton>
-     <MenuButton fx:id="button3" mnemonicParsing="false" text="" GridPane.columnIndex="1" GridPane.rowIndex="1" style="-fx-background-color: transparent; -fx-border-color: gray;">
+     <MenuButton fx:id="button3" mnemonicParsing="false" prefHeight="600.0" prefWidth="600.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" text="" GridPane.columnIndex="1" GridPane.rowIndex="1">
        <items>
-         <MenuItem mnemonicParsing="false" text="Blé" onAction="#selectButton"/>
-         <MenuItem mnemonicParsing="false" text="Mais" onAction="#selectButton"/>
+         <MenuItem mnemonicParsing="false" onAction="#selectButton" text="Blé" />
+         <MenuItem mnemonicParsing="false" onAction="#selectButton" text="Mais" />
          <MenuItem mnemonicParsing="false" text="Poule" />
          <MenuItem mnemonicParsing="false" text="Vache" />
-         <MenuItem mnemonicParsing="false" text="Pomme" onAction="#selectButton"/>
-         <MenuItem mnemonicParsing="false" text="Cerise" onAction="#selectButton"/>
+         <MenuItem mnemonicParsing="false" onAction="#selectButton" text="Pomme" />
+         <MenuItem mnemonicParsing="false" onAction="#selectButton" text="Cerise" />
        </items>
+       <stylesheets>
+         <URL value="@style.css" />
+       </stylesheets>
      </MenuButton>
+      <MenuButton fx:id="button41" layoutX="10.0" layoutY="40.0" mnemonicParsing="false" prefHeight="600.0" prefWidth="600.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" text="">
+         <items>
+            <MenuItem mnemonicParsing="false" onAction="#selectButton" text="Blé" />
+            <MenuItem mnemonicParsing="false" onAction="#selectButton" text="Mais" />
+            <MenuItem mnemonicParsing="false" text="Poule" />
+            <MenuItem mnemonicParsing="false" text="Vache" />
+            <MenuItem mnemonicParsing="false" onAction="#selectButton" text="Pomme" />
+            <MenuItem mnemonicParsing="false" onAction="#selectButton" text="Cerise" />
+         </items>
+         <stylesheets>
+            <URL value="@style.css" />
+         </stylesheets>
+      </MenuButton>
+      <MenuButton fx:id="button42" layoutX="10.0" layoutY="40.0" mnemonicParsing="false" prefHeight="600.0" prefWidth="600.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" text="" GridPane.columnIndex="3">
+         <items>
+            <MenuItem mnemonicParsing="false" onAction="#selectButton" text="Blé" />
+            <MenuItem mnemonicParsing="false" onAction="#selectButton" text="Mais" />
+            <MenuItem mnemonicParsing="false" text="Poule" />
+            <MenuItem mnemonicParsing="false" text="Vache" />
+            <MenuItem mnemonicParsing="false" onAction="#selectButton" text="Pomme" />
+            <MenuItem mnemonicParsing="false" onAction="#selectButton" text="Cerise" />
+         </items>
+         <stylesheets>
+            <URL value="@style.css" />
+         </stylesheets>
+      </MenuButton>
+      <MenuButton fx:id="button411" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="600.0" prefWidth="600.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" text="" GridPane.columnIndex="2">
+         <items>
+            <MenuItem mnemonicParsing="false" onAction="#selectButton" text="Blé" />
+            <MenuItem mnemonicParsing="false" onAction="#selectButton" text="Mais" />
+            <MenuItem mnemonicParsing="false" text="Poule" />
+            <MenuItem mnemonicParsing="false" text="Vache" />
+            <MenuItem mnemonicParsing="false" onAction="#selectButton" text="Pomme" />
+            <MenuItem mnemonicParsing="false" onAction="#selectButton" text="Cerise" />
+         </items>
+         <stylesheets>
+            <URL value="@style.css" />
+         </stylesheets>
+      </MenuButton>
+      <MenuButton fx:id="button43" layoutX="10.0" layoutY="40.0" mnemonicParsing="false" prefHeight="600.0" prefWidth="600.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" text="" GridPane.columnIndex="2" GridPane.rowIndex="1">
+         <items>
+            <MenuItem mnemonicParsing="false" onAction="#selectButton" text="Blé" />
+            <MenuItem mnemonicParsing="false" onAction="#selectButton" text="Mais" />
+            <MenuItem mnemonicParsing="false" text="Poule" />
+            <MenuItem mnemonicParsing="false" text="Vache" />
+            <MenuItem mnemonicParsing="false" onAction="#selectButton" text="Pomme" />
+            <MenuItem mnemonicParsing="false" onAction="#selectButton" text="Cerise" />
+         </items>
+         <stylesheets>
+            <URL value="@style.css" />
+         </stylesheets>
+      </MenuButton>
+      <MenuButton fx:id="button11" layoutX="220.0" layoutY="10.0" mnemonicParsing="false" prefHeight="600.0" prefWidth="600.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" GridPane.columnIndex="6">
+         <items>
+            <MenuItem mnemonicParsing="false" onAction="#selectButton" text="Blé" />
+            <MenuItem mnemonicParsing="false" onAction="#selectButton" text="Mais" />
+            <MenuItem mnemonicParsing="false" text="Poule" />
+            <MenuItem mnemonicParsing="false" text="Vache" />
+            <MenuItem mnemonicParsing="false" onAction="#selectButton" text="Pomme" />
+            <MenuItem mnemonicParsing="false" onAction="#selectButton" text="Cerise" />
+         </items>
+         <stylesheets>
+            <URL value="@style.css" />
+         </stylesheets>
+      </MenuButton>
+      <MenuButton fx:id="button111" layoutX="190.0" layoutY="10.0" mnemonicParsing="false" prefHeight="600.0" prefWidth="600.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" GridPane.columnIndex="5">
+         <items>
+            <MenuItem mnemonicParsing="false" onAction="#selectButton" text="Blé" />
+            <MenuItem mnemonicParsing="false" onAction="#selectButton" text="Mais" />
+            <MenuItem mnemonicParsing="false" text="Poule" />
+            <MenuItem mnemonicParsing="false" text="Vache" />
+            <MenuItem mnemonicParsing="false" onAction="#selectButton" text="Pomme" />
+            <MenuItem mnemonicParsing="false" onAction="#selectButton" text="Cerise" />
+         </items>
+         <stylesheets>
+            <URL value="@style.css" />
+         </stylesheets>
+      </MenuButton>
+      <MenuButton fx:id="button1111" layoutX="160.0" layoutY="10.0" mnemonicParsing="false" prefHeight="600.0" prefWidth="600.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" GridPane.columnIndex="4">
+         <items>
+            <MenuItem mnemonicParsing="false" onAction="#selectButton" text="Blé" />
+            <MenuItem mnemonicParsing="false" onAction="#selectButton" text="Mais" />
+            <MenuItem mnemonicParsing="false" text="Poule" />
+            <MenuItem mnemonicParsing="false" text="Vache" />
+            <MenuItem mnemonicParsing="false" onAction="#selectButton" text="Pomme" />
+            <MenuItem mnemonicParsing="false" onAction="#selectButton" text="Cerise" />
+         </items>
+         <stylesheets>
+            <URL value="@style.css" />
+         </stylesheets>
+      </MenuButton>
+      <MenuButton fx:id="button412" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="600.0" prefWidth="600.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" text="" GridPane.columnIndex="5" GridPane.rowIndex="1">
+         <items>
+            <MenuItem mnemonicParsing="false" onAction="#selectButton" text="Blé" />
+            <MenuItem mnemonicParsing="false" onAction="#selectButton" text="Mais" />
+            <MenuItem mnemonicParsing="false" text="Poule" />
+            <MenuItem mnemonicParsing="false" text="Vache" />
+            <MenuItem mnemonicParsing="false" onAction="#selectButton" text="Pomme" />
+            <MenuItem mnemonicParsing="false" onAction="#selectButton" text="Cerise" />
+         </items>
+         <stylesheets>
+            <URL value="@style.css" />
+         </stylesheets>
+      </MenuButton>
+      <MenuButton fx:id="button4121" layoutX="234.0" layoutY="10.0" mnemonicParsing="false" prefHeight="600.0" prefWidth="600.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" text="" GridPane.columnIndex="3" GridPane.rowIndex="1">
+         <items>
+            <MenuItem mnemonicParsing="false" onAction="#selectButton" text="Blé" />
+            <MenuItem mnemonicParsing="false" onAction="#selectButton" text="Mais" />
+            <MenuItem mnemonicParsing="false" text="Poule" />
+            <MenuItem mnemonicParsing="false" text="Vache" />
+            <MenuItem mnemonicParsing="false" onAction="#selectButton" text="Pomme" />
+            <MenuItem mnemonicParsing="false" onAction="#selectButton" text="Cerise" />
+         </items>
+         <stylesheets>
+            <URL value="@style.css" />
+         </stylesheets>
+      </MenuButton>
+      <MenuButton fx:id="button41211" layoutX="262.0" layoutY="10.0" mnemonicParsing="false" prefHeight="600.0" prefWidth="600.0" style="-fx-background-color: transparent; -fx-border-color: transparent;" text="" GridPane.columnIndex="4" GridPane.rowIndex="1">
+         <items>
+            <MenuItem mnemonicParsing="false" onAction="#selectButton" text="Blé" />
+            <MenuItem mnemonicParsing="false" onAction="#selectButton" text="Mais" />
+            <MenuItem mnemonicParsing="false" text="Poule"  />
+            <MenuItem mnemonicParsing="false" text="Vache" />
+            <MenuItem mnemonicParsing="false" onAction="#selectButton" text="Pomme" />
+            <MenuItem mnemonicParsing="false" onAction="#selectButton" text="Cerise" />
+         </items>
+         <stylesheets>
+            <URL value="@style.css" />
+         </stylesheets>
+      </MenuButton>
+      <Label fx:id="money" prefHeight="600.0" prefWidth="600.0" text="" GridPane.columnIndex="9" GridPane.rowIndex="17" />
    </children>
 </GridPane>

@@ -1,0 +1,5 @@
+.menu-button .arrow {
+    -fx-shape: ""; /* Supprime la flèche */
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+}
