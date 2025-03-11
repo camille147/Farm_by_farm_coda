@@ -1,0 +1,6 @@
+Wallet:1102.0
+Achat : Mais : 12pièces
+Vente : Blé : 15pièces
+Achat : Pomme : 5pièces
+Achat : Blé : 10pièces
+Achat : Cerise : 50pièces

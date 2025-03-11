@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="controller.BankController">
+    <top>
+        <Label text="Historique des Transactions" style="-fx-font-size: 20px; -fx-font-weight: bold;" />
+    </top>
+
+    <center>
+        <VBox spacing="10" alignment="CENTER">
+            <TableView fx:id="transactionsTable" prefHeight="200">
+                <columns>
+                    <TableColumn text="Type" fx:id="colType" prefWidth="100" />
+                    <TableColumn text="Nom" fx:id="colNom" prefWidth="150" />
+                    <TableColumn text="Prix" fx:id="colPrix" prefWidth="100" />
+                </columns>
+            </TableView>
+        </VBox>
+    </center>
+</BorderPane>

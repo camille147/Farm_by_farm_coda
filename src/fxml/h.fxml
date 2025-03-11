@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+    <!-- Barre de menu -->
+    <MenuBar>
+        <Menu text="Magasins">
+            <MenuItem text="Ajouter un magasin"/>
+            <MenuItem text="Liste des magasins"/>
+        </Menu>
+        <Menu text="Banque">
+            <MenuItem text="Voir solde"/>
+            <MenuItem text="Transactions"/>
+        </Menu>
+    </MenuBar>
+
+    <!-- Contenu principal -->
+    <HBox spacing="10" padding="10">
+        <!-- Vue du solde -->
+        <VBox>
+            <Label text="Solde actuel:"/>
+            <Label fx:id="soldeLabel" text="0.00 €"/>
+        </VBox>
+    </HBox>
+</VBox>

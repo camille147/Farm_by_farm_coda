@@ -6,6 +6,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import model.Vegetable;
 import java.io.*;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -13,6 +15,7 @@ public class FarmController {
     private final Map<String, Vegetable> vegetableInventory = new HashMap<>();
     private final Map<String, Integer> vegetablePrices = new HashMap<>();
     private final Map<String, Integer> vegetableSellPrices = new HashMap<>();
+    private final ArrayList<String> bankInstructions = new ArrayList<>();
 
     @FXML
     private Label moneyLabel;
@@ -33,6 +36,7 @@ public class FarmController {
         initializeVegetablePrices();
         initializeVegetableSellPrices();
         loadData();
+        loadBank();
 
         System.out.println(vegetableInventory);
     }
@@ -63,9 +67,11 @@ public class FarmController {
             wallet = wallet - price;
             vegetableInventory.putIfAbsent(vegetableName, new Vegetable(vegetableName));
             vegetableInventory.get(vegetableName).increaseQuantity();
+            bankInstructions.add("Achat : " + vegetableName + " : " +  price + "pièces");
             System.out.println("achat ok" + vegetableName);
             moneyLabel.setText("Argent :" + wallet);
             saveToFile();
+            saveToFileBank();
         } else {
             System.out.println("Fond insuffisant pr acheter" + vegetableName);
         }
@@ -100,11 +106,16 @@ public class FarmController {
 
         int sellPrice = vegetableSellPrices.get(vegetableName);
         wallet += sellPrice;
+
         vegetableInventory.get(vegetableName).lowerQuantity();
         System.out.println("Vente réussie : " + vegetableName + " vendu pour " + sellPrice + "€.");
 
+        bankInstructions.add("Vente : " + vegetableName + " : " + sellPrice + "pièces");
+
         moneyLabel.setText("Argent : " + wallet + "€");
         saveToFile();
+        System.out.println(bankInstructions);
+        saveToFileBank();
     }
 
 
@@ -134,6 +145,7 @@ public class FarmController {
 
             System.out.println(vegetableName + " récolté !");
             saveToFile();
+
         } else {
             System.out.println("Erreur : " + vegetableName + " n'existe pas dans l'inventaire !");
         }
@@ -147,6 +159,18 @@ public class FarmController {
                 writer.write(vegetable.getName() + " : " + vegetable.getQuantity() + "\n");
             }
             System.out.println("Inventaire sauvegardé !");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    private void saveToFileBank() {
+        try (FileWriter writer = new FileWriter("bank.txt")) {
+            writer.write("Wallet:" + wallet + "\n");
+            System.out.println(wallet);
+            for (int i = 0; i < bankInstructions.size(); i++) {
+                writer.write(bankInstructions.get(i) + "\n");
+            }
+            System.out.println("bank sauvegardé !");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -173,4 +197,23 @@ public class FarmController {
         }
         return vegetableInventory;
     }
+
+    private ArrayList loadBank() {
+        try (BufferedReader reader = new BufferedReader((new FileReader("bank.txt")))) {
+            reader.lines().forEach(line -> {
+                if (line.startsWith("Wallet:")) {
+                    wallet = Double.parseDouble(line.split(":")[1].trim());
+
+                } else {
+                    bankInstructions.add(line); // Ajoute la ligne telle quelle
+                }
+            });
+
+        }catch(IOException e) {
+            System.out.println("load");
+            e.printStackTrace();
+        }
+        return bankInstructions;
+    }
+
 }

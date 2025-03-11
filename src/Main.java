@@ -18,12 +18,14 @@ public class Main extends Application {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("./fxml/field.fxml"));
         Parent root = loader.load();
 
+
         Farm farm = new Farm(500);
         Scene scene = new Scene(root, 600, 600);
         primaryStage.setTitle("JavaFX avec FXML");
         primaryStage.setScene(scene);
         primaryStage.show();
     }
+
 
     public static void main(String[] args) {
         launch(args);
