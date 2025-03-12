@@ -8,28 +8,33 @@
     <Label text="Acheter des graines" />
 
     <Label text="Blé 10 pièces" />
-    <Button text="Blé" onAction="#buy"/>
+    <Button text="Blé" onAction="#buyVegetable"/>
 
     <Label text="Mais 12 pièces" />
-    <Button text="Mais" onAction="#buy"/>
+    <Button text="Mais" onAction="#buyVegetable"/>
 
     <Label text="Banane 7 pièces" />
-    <Button text="Banane" onAction="#buy"/>
+    <Button text="Banane" onAction="#buyVegetable"/>
 
     <Label text="Pomme 5 pièces" />
-    <Button text="Pomme" onAction="#buy"/>
+    <Button text="Pomme" onAction="#buyVegetable"/>
 
     <Label text="Cerise 50 pièces" />
-    <Button text="Cerise" onAction="#buy"/>
+    <Button text="Cerise" onAction="#buyVegetable"/>
 
     <Label fx:id="moneyLabel" text="" />
 
-<!--    <Separator />-->
+    <Separator />
 
-<!--    <Label text="Acheter des animaux" />-->
-<!--    <Button text="Acheter Vache (10 pièces)" />-->
-<!--    <Button text="Acheter Cochon (15 pièces)" />-->
-<!--    <Button text="Acheter Poule (12 pièces)" />-->
+    <Label text="Acheter des animaux" />
+    <Label text="Vache 22 pièces" />
+    <Button text="Vache" onAction="#buyAnimal"/>
+
+    <Label text="Poule 11 pièces" />
+    <Button text="Poule" onAction="#buyAnimal"/>
+
+    <Label text="Cochon 33 pièces" />
+    <Button text="Cochon" onAction="#buyAnimal"/>
 
 
 </VBox>

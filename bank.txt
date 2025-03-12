@@ -1,6 +1,47 @@
-Wallet:1102.0
+Wallet:488.0
 Achat : Mais : 12pièces
 Vente : Blé : 15pièces
 Achat : Pomme : 5pièces
 Achat : Blé : 10pièces
 Achat : Cerise : 50pièces
+Vente : Blé : 15pièces
+Achat : Blé : 10pièces
+Achat : Blé : 10pièces
+Achat : Mais : 12pièces
+Vente : Pomme : 10pièces
+Achat : Mais : 12pièces
+Vente : Blé : 15pièces
+Achat : Blé : 10pièces
+Achat : Blé : 10pièces
+Achat : Blé : 10pièces
+Achat : Mais : 12pièces
+Achat : Mais : 12pièces
+Achat : Banane : 7pièces
+Achat : Banane : 7pièces
+Achat : Pomme : 5pièces
+Achat : Pomme : 5pièces
+Achat : Cerise : 50pièces
+Achat : Cerise : 50pièces
+Achat : Blé - 10 pièces
+Achat : Mais - 12 pièces
+Vente : Pomme - 10 pièces
+Vente : Blé : 15pièces
+Achat : Vache : 22 pièces
+Achat : Poule : 11 pièces
+Achat : Banane : 7pièces
+Achat : Cerise : 50pièces
+Vente : Banane : 12pièces
+Achat : Blé : 10pièces
+Vente : Pomme : 10pièces
+Achat : Cerise : 50pièces
+Achat : Cerise : 50pièces
+Achat : Pomme : 5pièces
+Achat : Cerise : 50pièces
+Achat : Banane : 7pièces
+Achat : Blé : 10pièces
+Achat : Pomme : 5pièces
+Achat : Blé : 10pièces
+Achat : Pomme : 5pièces
+Achat : Banane : 7pièces
+Achat : Pomme : 5pièces
+Achat : Blé : 10pièces

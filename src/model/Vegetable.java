@@ -35,7 +35,7 @@ public class Vegetable {
     }
 
     public void increaseQuantity() {
-        this.quantity = quantity + 1;
+        this.quantity = quantity + 2;
     }
 
 

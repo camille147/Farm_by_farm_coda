@@ -11,7 +11,7 @@
     <Label text="Blé 15 pièces" />
     <Button text="Blé" onAction="#sell" />
 
-    <Label text="Mais 17pièces" />
+    <Label text="Mais 17 pièces" />
     <Button text="Mais" onAction="#sell" />
 
     <Label text="Pomme 10 pièces" />

@@ -1,6 +1,8 @@
-Wallet:1102.0
-Cerise : 1
-Banane : 0
-Mais : 1
-Pomme : 1
-Blé : 1
+V:Cerise : 6
+V:Banane : 6
+V:Mais : 0
+V:Pomme : 5
+V:Blé : 0
+A:Poule : 3
+A:Vache : 0
+A:Cochon : 5

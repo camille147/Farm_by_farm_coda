@@ -1,0 +1,6 @@
+Cerise : 5
+Banane : 0
+Poule : 0
+Mais : 2
+Pomme : 1
+Blé : 8

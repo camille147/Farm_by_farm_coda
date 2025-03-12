@@ -27,8 +27,13 @@ import java.util.Map;
 public class GameController {
 
     private final FarmController farmController = new FarmController();
-    private final Map<MenuItem, String> plantedVegetables = new HashMap<>();
-    private final Map<MenuItem, String> readyToHarvestVegetable = new HashMap<>();
+    private final Map<MenuButton, String> plantedVegetables = new HashMap<>();
+    private final Map<MenuButton, String> readyToHarvestVegetable = new HashMap<>();
+    private final Map<MenuButton, String> startingGrowing = new HashMap<>();
+    private final Map<MenuButton, String> readyToFeed = new HashMap<>();
+    private final Map<MenuButton, String> continueGrowing = new HashMap<>();
+    private final Map<MenuButton, String> readyToRecoltRessource = new HashMap<>();
+
 
     private double wallet;
 
@@ -43,7 +48,7 @@ public class GameController {
     public void initialize() {
         loadWallet();
         if (labelMoney != null) {
-            labelMoney.setText(("Argent : " + wallet + "€"));
+            labelMoney.setText(("Solde : " + wallet + "€"));
         } else {
             System.out.println("⚠️ moneyLabel est toujours null après injection !");
         }
@@ -68,7 +73,7 @@ public class GameController {
         try{
             FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
             Parent root = loader.load();
-            labelMoney.setText(String.valueOf("li" + wallet));
+            labelMoney.setText(String.valueOf("Solde : " + wallet + "€"));
             Stage modal = new Stage();
             modal.initModality(Modality.APPLICATION_MODAL);
             modal.setTitle(title);
@@ -77,7 +82,8 @@ public class GameController {
             modal.setScene(new Scene(root));
 
             modal.showAndWait();
-            labelMoney.setText(String.valueOf("dfgh" +wallet));
+            loadWallet();
+            labelMoney.setText(String.valueOf("Solde : " + wallet + "€"));
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -92,35 +98,81 @@ public class GameController {
 
         String vegetableName = selectedVegetableItem.getText();
 
-        if (plantedVegetables.containsKey(selectedVegetableItem)) {
+        if (startingGrowing.containsKey(parentMenuButton) ||
+                readyToFeed.containsKey(parentMenuButton) ||
+                continueGrowing.containsKey(parentMenuButton) ||
+                readyToRecoltRessource.containsKey(parentMenuButton)) {
+
+            System.out.println("Impossible de planter un légume ici, un animal est déjà présent !");
+            return;
+        }
+        if (plantedVegetables.containsKey(parentMenuButton)) {
             System.out.println("en cours de pousse");
 
-        }  else if (readyToHarvestVegetable.containsKey(selectedVegetableItem)){
-            harvestVegetable(selectedVegetableItem);
+        }  else if (readyToHarvestVegetable.containsKey(parentMenuButton)){
+            harvestVegetable(parentMenuButton, selectedVegetableItem);
+
 
         } else {
-            farmController.plantVegetable(vegetableName);
-            plantedVegetables.put(selectedVegetableItem, vegetableName);
-            parentMenuButton.setText("p");
-            startGrowthTimer(selectedVegetableItem);
+            if(farmController.plantVegetable(vegetableName)) {
+                plantedVegetables.put(parentMenuButton, vegetableName);
+                parentMenuButton.setText("p");
+                startGrowthTimer(parentMenuButton, selectedVegetableItem);
+            };
+
         }
 
     }
 
-    private void startGrowthTimer(MenuItem selectedVegetableItem) {
+    public void selectButtonAnimal(ActionEvent event) {
+        MenuItem selectedAnimalItem = (MenuItem) event.getSource();
+        MenuButton parentMenuButton = (MenuButton) selectedAnimalItem.getParentPopup().getOwnerNode();
+
+        String animalName = selectedAnimalItem.getText();
+
+        if (plantedVegetables.containsKey(parentMenuButton) ||
+                readyToHarvestVegetable.containsKey(parentMenuButton)) {
+
+            System.out.println("Impossible d'installer un animal ici, un légume est déjà présent !");
+            return;
+        }
+
+        if (startingGrowing.containsKey(parentMenuButton)) {
+            System.out.println("en première phase de croissnace");
+
+        } else if (readyToFeed.containsKey(parentMenuButton)){
+            System.out.println("doit etre nourrit");
+//            harvestVegetable(parentMenuButton, selectedAnimalItem);
+
+        } else if (continueGrowing.containsKey(parentMenuButton)){
+            System.out.println("en deuxieme phase de croissnace");
+
+        }else if (readyToRecoltRessource.containsKey(parentMenuButton)){
+            harvestVegetable(parentMenuButton, selectedAnimalItem);
+
+        } else {
+            farmController.installAnimal(animalName);
+            startingGrowing.put(parentMenuButton, animalName);
+            parentMenuButton.setText("a");
+            startGrowthTimer(parentMenuButton, selectedAnimalItem);
+        }
+
+    }
+
+    private void startGrowthTimer(MenuButton parentButton, MenuItem selectedVegetableItem) {
 //        plantedButtons.add(button);
 //        button.setText("p");
 
         // Simulation du temps de pousse (5 secondes avant récolte possible)
         Timeline growthTimeline = new Timeline(
                 new KeyFrame(Duration.seconds(5), e -> {
-                    String vegetableName = plantedVegetables.get(selectedVegetableItem);
+                    String vegetableName = plantedVegetables.get(parentButton);
 
-                    plantedVegetables.remove(selectedVegetableItem);
-                    readyToHarvestVegetable.put(selectedVegetableItem, vegetableName);
+                    plantedVegetables.remove(parentButton);
+                    readyToHarvestVegetable.put(parentButton, vegetableName);
                     MenuButton parentMenuButton = (MenuButton) selectedVegetableItem.getParentPopup().getOwnerNode();
-                    parentMenuButton.setText("R");
-                    selectedVegetableItem.setText("Blé");
+                    parentButton.setText("R");
+                    selectedVegetableItem.setText("Récolter");
                     System.out.println("time finish swith recolte");
 
                 })
@@ -129,16 +181,25 @@ public class GameController {
         growthTimeline.play();
     }
 
-    private void harvestVegetable (MenuItem currentVegetableItem) {
+    private void harvestVegetable (MenuButton parentButton, MenuItem selectedVegetableItem) {
+        System.out.println(parentButton);
+        String action = selectedVegetableItem.getText();
+        String vegetableName = readyToHarvestVegetable.get(parentButton);
+        System.out.println("gf");
+        System.out.println(vegetableName);
+        parentButton.setText("R");
 
-        System.out.println(currentVegetableItem);
-        String vegetableName = readyToHarvestVegetable.get(currentVegetableItem);
 
-        if (vegetableName != null) {
+        if (action.equals("Récolter") ) {
+            System.out.println("j");
+
+            selectedVegetableItem.setText(vegetableName);
             farmController.harvestVegetable(vegetableName);
-            readyToHarvestVegetable.remove(currentVegetableItem);
-            currentVegetableItem.setText("Blé");
+            readyToHarvestVegetable.remove(parentButton);
+            //parentButton.setText("Blé");
             System.out.println("recolte !");
+            parentButton.setText("");
+
         } else {
             System.out.println(("erreur recolte"));
         }
@@ -147,7 +208,7 @@ public class GameController {
 
 
     private double loadWallet() {
-        try (BufferedReader reader = new BufferedReader((new FileReader("harvest.txt")))) {
+        try (BufferedReader reader = new BufferedReader((new FileReader("bank.txt")))) {
             reader.lines().forEach(line -> {
                 if (line.startsWith("Wallet:")) {
                     wallet = Double.parseDouble(line.split(":")[1].trim());
