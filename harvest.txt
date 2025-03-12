@@ -3,6 +3,6 @@ V:Banane : 6
 V:Mais : 0
 V:Pomme : 5
 V:Blé : 0
-A:Poule : 3
+A:Poule : 0
 A:Vache : 0
 A:Cochon : 5

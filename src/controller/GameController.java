@@ -142,23 +142,84 @@ public class GameController {
 
         } else if (readyToFeed.containsKey(parentMenuButton)){
             System.out.println("doit etre nourrit");
-//            harvestVegetable(parentMenuButton, selectedAnimalItem);
+            feedAnimal(parentMenuButton, selectedAnimalItem);
+
 
         } else if (continueGrowing.containsKey(parentMenuButton)){
             System.out.println("en deuxieme phase de croissnace");
 
         }else if (readyToRecoltRessource.containsKey(parentMenuButton)){
-            harvestVegetable(parentMenuButton, selectedAnimalItem);
+            //harvestVegetable(parentMenuButton, selectedAnimalItem);
+           // faire recolte
 
         } else {
             farmController.installAnimal(animalName);
             startingGrowing.put(parentMenuButton, animalName);
             parentMenuButton.setText("a");
-            startGrowthTimer(parentMenuButton, selectedAnimalItem);
+            startGrowthTimerAnimal(parentMenuButton, selectedAnimalItem);
         }
 
     }
 
+    private void feedAnimal(MenuButton parentButton, MenuItem selectedAnimalItem) {
+        // Vérification si l'animal est dans la phase prête à être nourrie
+        String animalName = readyToFeed.get(parentButton);
+
+
+        if (animalName != null) {
+            // Appel à la méthode du FarmController pour nourrir l'animal
+            farmController.feedAnimal(animalName);
+    System.out.println("feed game pass");
+            // Mise à jour de l'état de l'animal
+            readyToFeed.remove(parentButton);
+            continueGrowing.put(parentButton, animalName);
+
+            Timeline growthTimeline = new Timeline(
+                    new KeyFrame(Duration.seconds(5), e -> {
+
+                        continueGrowing.remove(parentButton);
+                        readyToRecoltRessource.put(parentButton, animalName);
+                        MenuButton parentMenuButton = (MenuButton) selectedAnimalItem.getParentPopup().getOwnerNode();
+                        parentButton.setText("s");
+                        selectedAnimalItem.setText("ressource");
+                        System.out.println("time finish swith recolte");
+
+                    })
+            );
+            growthTimeline.setCycleCount(1);
+            growthTimeline.play();
+//
+//            // Mise à jour de l'interface
+//            parentButton.setText("2");  // Le texte peut être modifié pour refléter que l'animal est nourri
+//            selectedAnimalItem.setText("ressour");
+//
+//            System.out.println(animalName + " a été nourri ! Il est maintenant dans la deuxième phase de croissance.");
+        } else {
+            System.out.println("error");
+        }
+    }
+
+    private void startGrowthTimerAnimal(MenuButton parentButton, MenuItem selectedAnimalItem) {
+//        plantedButtons.add(button);
+//        button.setText("p");
+
+        // Simulation du temps de pousse (5 secondes avant récolte possible)
+        Timeline growthTimeline = new Timeline(
+                new KeyFrame(Duration.seconds(5), e -> {
+                    String animalName = startingGrowing.get(parentButton);
+
+                    startingGrowing.remove(parentButton);
+                    readyToFeed.put(parentButton, animalName);
+                    MenuButton parentMenuButton = (MenuButton) selectedAnimalItem.getParentPopup().getOwnerNode();
+                    parentButton.setText("n");
+                    selectedAnimalItem.setText("Nourrir");
+                    System.out.println("time finish swith nourrir");
+
+                })
+        );
+        growthTimeline.setCycleCount(1);
+        growthTimeline.play();
+    }
     private void startGrowthTimer(MenuButton parentButton, MenuItem selectedVegetableItem) {
 //        plantedButtons.add(button);
 //        button.setText("p");

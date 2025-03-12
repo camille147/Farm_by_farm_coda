@@ -20,6 +20,9 @@ public class FarmController {
     private final Map<String, Integer> vegetablePrices = new HashMap<>();
     private final Map<String, Integer> vegetableSellPrices = new HashMap<>();
     private final Map<String, Integer> animalPrices = new HashMap<>();
+    private final Map<String, String> animalFood = new HashMap<>();
+
+
     private final Map<String, Integer> animalSellPrices = new HashMap<>();
     private final ArrayList<String> bankInstructions = new ArrayList<>();
 
@@ -41,6 +44,7 @@ public class FarmController {
         }
         initializeVegetablePrices();
         initializeAnimalPrices();
+        initializeAnimalFood();
         initializeVegetableSellPrices();
         loadData();
         loadDataProducts();
@@ -64,6 +68,12 @@ public class FarmController {
         vegetablePrices.put("Pomme", 5);
         vegetablePrices.put("Banane", 7);
         vegetablePrices.put("Cerise", 50);
+    }
+
+    public void initializeAnimalFood() {
+        animalFood.put("Poule", "Mais");
+        animalFood.put("Cochon", "Pomme");
+        animalFood.put("Vache", "Blé");
     }
 
     public void initializeAnimalPrices() {
@@ -167,6 +177,41 @@ public class FarmController {
             System.out.println("Pas assez d'argent pour acheter " + animalName);
         }
     }
+
+    public void feedAnimal(String animalName) {
+        // Vérification que l'animal existe dans l'inventaire
+        if (!animalInventory.containsKey(animalName)) {
+            System.out.println("Cet animal n'existe pas dans l'inventaire !");
+            return;
+        }
+
+        // Vérification que l'animal a de la nourriture associée
+        if (!animalFood.containsKey(animalName)) {
+            System.out.println("Aucune nourriture définie pour " + animalName);
+            return;
+        }
+
+        // Récupérer la ressource nécessaire pour nourrir l'animal
+        String food = animalFood.get(animalName);
+
+        // Vérifier s'il y a suffisamment de cette ressource dans l'inventaire
+        if (vegetableProducts.containsKey(food) &&  vegetableProducts.get(food).getQuantity() > 0) {
+            // Nourrir l'animal (réduire la quantité de nourriture)
+            Vegetable foodResource = vegetableProducts.get(food);
+            foodResource.lowerQuantity();  // Réduire la quantité de la ressource alimentaire
+            System.out.println(animalName + " a été nourri avec " + food + " !");
+
+            // Si tu veux, tu peux ajouter une méthode dans la classe Animal pour marquer qu'il a été nourri
+            // animalInventory.get(animalName).setFed(true);
+
+            // Sauvegarder les changements
+            saveToFile(); // Sauvegarder l'état actuel après avoir nourri l'animal
+        } else {
+            // Si il n'y a pas assez de nourriture
+            System.out.println("Pas assez de " + food + " pour nourrir " + animalName);
+        }
+    }
+
 
 
 //    public void addResource(String resourceName, int quantity) {
