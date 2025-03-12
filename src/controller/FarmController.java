@@ -79,7 +79,7 @@ public class FarmController {
         if (moneyLabel != null) {
             moneyLabel.setText(("Argent : " + wallet + "€"));
         } else {
-            System.out.println("⚠️ moneyLabel est toujours null après injection !");
+            System.out.println(" moneyLabel est toujours null après injection !");
         }
     }
 
@@ -242,7 +242,7 @@ public class FarmController {
         }else {
             System.out.println("Pas assez de " + animalName + " dans l'inventaire !");
         }
-    }     // tab avec veg et animaux, et qd enregistrer pas animaux donc load pas naimaux
+    }
 
     public void harvestVegetable(String vegetableName) {
         if (vegetableProducts.containsKey(vegetableName)) {
@@ -291,13 +291,6 @@ public class FarmController {
             for (Production product : animalProduction.values()) {
                 writer.write("P:" + product.getName() + " : " + product.getQuantity() + "\n");
             }
-//
-//            for (Vegetable vegetable : vegetableInventory.values()) {
-//                writer.write(vegetable.getName() + " : " + vegetable.getQuantity() + "\n");
-//            }
-//            for (Animal animal : vegetableInventory.values()) {
-//                writer.write(animal.getName() + " : " + animal.getAge() + "\n");
-//            }
             System.out.println("Inventaire sauvegardé !");
         } catch (IOException e) {
             e.printStackTrace();
