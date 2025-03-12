@@ -84,6 +84,8 @@
             <MenuItem mnemonicParsing="false" text="Poule" onAction="#selectButtonAnimal"/>
             <MenuItem mnemonicParsing="false" text="Vache" onAction="#selectButtonAnimal"/>
             <MenuItem mnemonicParsing="false" onAction="#selectButton" text="Pomme" />
+            <MenuItem mnemonicParsing="false" text="Mouton" onAction="#selectButtonAnimal"/>
+
             <MenuItem mnemonicParsing="false" onAction="#selectButton" text="Cerise" />
         </items>
         <stylesheets>
@@ -96,6 +98,8 @@
             <MenuItem mnemonicParsing="false" onAction="#selectButton" text="Mais" />
             <MenuItem mnemonicParsing="false" text="Poule" onAction="#selectButtonAnimal"/>
             <MenuItem mnemonicParsing="false" text="Vache" onAction="#selectButtonAnimal"/>
+            <MenuItem mnemonicParsing="false" text="Mouton" onAction="#selectButtonAnimal"/>
+
             <MenuItem mnemonicParsing="false" onAction="#selectButton" text="Pomme" />
             <MenuItem mnemonicParsing="false" onAction="#selectButton" text="Cerise" />
         </items>
@@ -109,6 +113,8 @@
             <MenuItem mnemonicParsing="false" onAction="#selectButton" text="Mais" />
             <MenuItem mnemonicParsing="false" text="Poule" onAction="#selectButtonAnimal"/>
             <MenuItem mnemonicParsing="false" text="Vache" onAction="#selectButtonAnimal"/>
+            <MenuItem mnemonicParsing="false" text="Mouton" onAction="#selectButtonAnimal"/>
+
             <MenuItem mnemonicParsing="false" onAction="#selectButton" text="Pomme" />
             <MenuItem mnemonicParsing="false" onAction="#selectButton" text="Cerise" />
         </items>
@@ -122,6 +128,8 @@
             <MenuItem mnemonicParsing="false" onAction="#selectButton" text="Mais" />
             <MenuItem mnemonicParsing="false" text="Poule" onAction="#selectButtonAnimal"/>
             <MenuItem mnemonicParsing="false" text="Vache" onAction="#selectButtonAnimal"/>
+            <MenuItem mnemonicParsing="false" text="Mouton" onAction="#selectButtonAnimal"/>
+
             <MenuItem mnemonicParsing="false" onAction="#selectButton" text="Pomme" />
             <MenuItem mnemonicParsing="false" onAction="#selectButton" text="Cerise" />
         </items>
@@ -135,6 +143,8 @@
             <MenuItem mnemonicParsing="false" onAction="#selectButton" text="Mais" />
             <MenuItem mnemonicParsing="false" text="Poule" onAction="#selectButtonAnimal"/>
             <MenuItem mnemonicParsing="false" text="Vache" onAction="#selectButtonAnimal"/>
+            <MenuItem mnemonicParsing="false" text="Mouton" onAction="#selectButtonAnimal"/>
+
             <MenuItem mnemonicParsing="false" onAction="#selectButton" text="Pomme" />
             <MenuItem mnemonicParsing="false" onAction="#selectButton" text="Cerise" />
         </items>
@@ -148,6 +158,8 @@
             <MenuItem mnemonicParsing="false" onAction="#selectButton" text="Mais" />
             <MenuItem mnemonicParsing="false" text="Poule" onAction="#selectButtonAnimal"/>
             <MenuItem mnemonicParsing="false" text="Vache" onAction="#selectButtonAnimal"/>
+            <MenuItem mnemonicParsing="false" text="Mouton" onAction="#selectButtonAnimal"/>
+
             <MenuItem mnemonicParsing="false" onAction="#selectButton" text="Pomme" />
             <MenuItem mnemonicParsing="false" onAction="#selectButton" text="Cerise" />
         </items>
@@ -161,6 +173,8 @@
             <MenuItem mnemonicParsing="false" onAction="#selectButton" text="Mais" />
             <MenuItem mnemonicParsing="false" text="Poule" onAction="#selectButtonAnimal"/>
             <MenuItem mnemonicParsing="false" text="Vache" onAction="#selectButtonAnimal"/>
+            <MenuItem mnemonicParsing="false" text="Mouton" onAction="#selectButtonAnimal"/>
+
             <MenuItem mnemonicParsing="false" onAction="#selectButton" text="Pomme" />
             <MenuItem mnemonicParsing="false" onAction="#selectButton" text="Cerise" />
         </items>
@@ -174,6 +188,8 @@
             <MenuItem mnemonicParsing="false" onAction="#selectButton" text="Mais" />
             <MenuItem mnemonicParsing="false" text="Poule" onAction="#selectButtonAnimal"/>
             <MenuItem mnemonicParsing="false" text="Vache" onAction="#selectButtonAnimal"/>
+            <MenuItem mnemonicParsing="false" text="Mouton" onAction="#selectButtonAnimal"/>
+
             <MenuItem mnemonicParsing="false" onAction="#selectButton" text="Pomme" />
             <MenuItem mnemonicParsing="false" onAction="#selectButton" text="Cerise" />
         </items>
@@ -187,6 +203,8 @@
             <MenuItem mnemonicParsing="false" onAction="#selectButton" text="Mais" />
             <MenuItem mnemonicParsing="false" text="Poule" onAction="#selectButtonAnimal"/>
             <MenuItem mnemonicParsing="false" text="Vache" onAction="#selectButtonAnimal"/>
+            <MenuItem mnemonicParsing="false" text="Mouton" onAction="#selectButtonAnimal"/>
+
             <MenuItem mnemonicParsing="false" onAction="#selectButton" text="Pomme" />
             <MenuItem mnemonicParsing="false" onAction="#selectButton" text="Cerise" />
         </items>
@@ -200,6 +218,8 @@
             <MenuItem mnemonicParsing="false" onAction="#selectButton" text="Mais" />
             <MenuItem mnemonicParsing="false" text="Poule" onAction="#selectButtonAnimal"/>
             <MenuItem mnemonicParsing="false" text="Vache" onAction="#selectButtonAnimal"/>
+            <MenuItem mnemonicParsing="false" text="Mouton" onAction="#selectButtonAnimal"/>
+
             <MenuItem mnemonicParsing="false" onAction="#selectButton" text="Pomme" />
             <MenuItem mnemonicParsing="false" onAction="#selectButton" text="Cerise" />
         </items>
@@ -213,6 +233,8 @@
             <MenuItem mnemonicParsing="false" onAction="#selectButton" text="Mais" />
             <MenuItem mnemonicParsing="false" text="Poule" onAction="#selectButtonAnimal"/>
             <MenuItem mnemonicParsing="false" text="Vache" onAction="#selectButtonAnimal"/>
+            <MenuItem mnemonicParsing="false" text="Mouton" onAction="#selectButtonAnimal"/>
+
             <MenuItem mnemonicParsing="false" onAction="#selectButton" text="Pomme" />
             <MenuItem mnemonicParsing="false" onAction="#selectButton" text="Cerise" />
         </items>
@@ -226,6 +248,8 @@
             <MenuItem mnemonicParsing="false" onAction="#selectButton" text="Mais" />
             <MenuItem mnemonicParsing="false" text="Poule" onAction="#selectButtonAnimal"/>
             <MenuItem mnemonicParsing="false" text="Vache" onAction="#selectButtonAnimal"/>
+            <MenuItem mnemonicParsing="false" text="Mouton" onAction="#selectButtonAnimal"/>
+
             <MenuItem mnemonicParsing="false" onAction="#selectButton" text="Pomme" />
             <MenuItem mnemonicParsing="false" onAction="#selectButton" text="Cerise" />
         </items>
@@ -239,6 +263,8 @@
             <MenuItem mnemonicParsing="false" onAction="#selectButton" text="Mais" />
             <MenuItem mnemonicParsing="false" text="Poule" onAction="#selectButtonAnimal"/>
             <MenuItem mnemonicParsing="false" text="Vache" onAction="#selectButtonAnimal"/>
+            <MenuItem mnemonicParsing="false" text="Mouton" onAction="#selectButtonAnimal"/>
+
             <MenuItem mnemonicParsing="false" onAction="#selectButton" text="Pomme" />
             <MenuItem mnemonicParsing="false" onAction="#selectButton" text="Cerise" />
         </items>
@@ -252,6 +278,8 @@
             <MenuItem mnemonicParsing="false" onAction="#selectButton" text="Mais" />
             <MenuItem mnemonicParsing="false" text="Poule" onAction="#selectButtonAnimal"/>
             <MenuItem mnemonicParsing="false" text="Vache" onAction="#selectButtonAnimal"/>
+            <MenuItem mnemonicParsing="false" text="Mouton" onAction="#selectButtonAnimal"/>
+
             <MenuItem mnemonicParsing="false" onAction="#selectButton" text="Pomme" />
             <MenuItem mnemonicParsing="false" onAction="#selectButton" text="Cerise" />
         </items>

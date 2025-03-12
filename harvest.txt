@@ -1,8 +1,8 @@
 V:Cerise : 6
 V:Banane : 6
 V:Mais : 0
-V:Pomme : 5
-V:Blé : 0
-A:Poule : 0
-A:Vache : 0
-A:Cochon : 5
+V:Pomme : 6
+V:Blé : 2
+A:Poule : 6
+A:Mouton : 1
+A:Vache : 2

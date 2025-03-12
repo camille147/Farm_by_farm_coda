@@ -150,7 +150,7 @@ public class GameController {
 
         }else if (readyToRecoltRessource.containsKey(parentMenuButton)){
             //harvestVegetable(parentMenuButton, selectedAnimalItem);
-           // faire recolte
+           recoltAnimal(parentMenuButton, selectedAnimalItem);
 
         } else {
             farmController.installAnimal(animalName);
@@ -161,6 +161,44 @@ public class GameController {
 
     }
 
+    private void recoltAnimal(MenuButton parentButton, MenuItem selectedAnimalItem) {
+        // Vérification si l'animal est dans la phase prête à être nourrie
+        String animalName = readyToRecoltRessource.get(parentButton);
+
+
+        if (animalName != null) {
+            // Appel à la méthode du FarmController pour nourrir l'animal
+            farmController.recoltAnimal(animalName);
+            System.out.println("recolte animal game pass");
+//            // Mise à jour de l'état de l'animal
+            readyToRecoltRessource.remove(parentButton);
+//            continueGrowing.put(parentButton, animalName);
+//
+//            Timeline growthTimeline = new Timeline(
+//                    new KeyFrame(Duration.seconds(5), e -> {
+//
+//                        continueGrowing.remove(parentButton);
+//                        readyToRecoltRessource.put(parentButton, animalName);
+//                        MenuButton parentMenuButton = (MenuButton) selectedAnimalItem.getParentPopup().getOwnerNode();
+//                        parentButton.setText("s");
+//                        selectedAnimalItem.setText("ressource");
+//                        System.out.println("time finish swith recolte");
+//
+//                    })
+//            );
+//            growthTimeline.setCycleCount(1);
+//            growthTimeline.play();
+//
+//            // Mise à jour de l'interface
+           parentButton.setText("");  // Le texte peut être modifié pour refléter que l'animal est nourri
+            selectedAnimalItem.setText(animalName);
+//
+//            System.out.println(animalName + " a été nourri ! Il est maintenant dans la deuxième phase de croissance.");
+        } else {
+            System.out.println("error récolte");
+        }
+    }
+
     private void feedAnimal(MenuButton parentButton, MenuItem selectedAnimalItem) {
         // Vérification si l'animal est dans la phase prête à être nourrie
         String animalName = readyToFeed.get(parentButton);
@@ -168,32 +206,34 @@ public class GameController {
 
         if (animalName != null) {
             // Appel à la méthode du FarmController pour nourrir l'animal
-            farmController.feedAnimal(animalName);
-    System.out.println("feed game pass");
-            // Mise à jour de l'état de l'animal
-            readyToFeed.remove(parentButton);
-            continueGrowing.put(parentButton, animalName);
+            if (farmController.feedAnimal(animalName)) {
+                System.out.println("feed game pass");
+                // Mise à jour de l'état de l'animal
+                readyToFeed.remove(parentButton);
+                continueGrowing.put(parentButton, animalName);
 
-            Timeline growthTimeline = new Timeline(
-                    new KeyFrame(Duration.seconds(5), e -> {
+                Timeline growthTimeline = new Timeline(
+                        new KeyFrame(Duration.seconds(10), e -> {
 
-                        continueGrowing.remove(parentButton);
-                        readyToRecoltRessource.put(parentButton, animalName);
-                        MenuButton parentMenuButton = (MenuButton) selectedAnimalItem.getParentPopup().getOwnerNode();
-                        parentButton.setText("s");
-                        selectedAnimalItem.setText("ressource");
-                        System.out.println("time finish swith recolte");
+                            continueGrowing.remove(parentButton);
+                            readyToRecoltRessource.put(parentButton, animalName);
+                            MenuButton parentMenuButton = (MenuButton) selectedAnimalItem.getParentPopup().getOwnerNode();
+                            parentButton.setText("s");
+                            selectedAnimalItem.setText("ressource");
+                            System.out.println("time finish swith recolte");
 
-                    })
-            );
-            growthTimeline.setCycleCount(1);
-            growthTimeline.play();
+                        })
+                );
+                growthTimeline.setCycleCount(1);
+                growthTimeline.play();
 //
 //            // Mise à jour de l'interface
 //            parentButton.setText("2");  // Le texte peut être modifié pour refléter que l'animal est nourri
 //            selectedAnimalItem.setText("ressour");
 //
-//            System.out.println(animalName + " a été nourri ! Il est maintenant dans la deuxième phase de croissance.");
+//
+            };
+    System.out.println(animalName + " a été nourri ! Il est maintenant dans la deuxième phase de croissance.");
         } else {
             System.out.println("error");
         }

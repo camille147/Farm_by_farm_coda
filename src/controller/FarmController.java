@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import model.Animal;
+import model.Production;
 import model.Vegetable;
 import java.io.*;
 import java.lang.reflect.Array;
@@ -17,10 +18,14 @@ public class FarmController {
     private final Map<String, Vegetable> vegetableProducts = new HashMap<>();
 
     private final Map<String, Animal> animalInventory = new HashMap<>();
+    private final Map<String, Production> animalProduction = new HashMap<>();
+
     private final Map<String, Integer> vegetablePrices = new HashMap<>();
     private final Map<String, Integer> vegetableSellPrices = new HashMap<>();
     private final Map<String, Integer> animalPrices = new HashMap<>();
     private final Map<String, String> animalFood = new HashMap<>();
+    private final Map<String, String> animalResource = new HashMap<>();
+
 
 
     private final Map<String, Integer> animalSellPrices = new HashMap<>();
@@ -42,10 +47,7 @@ public class FarmController {
         } else {
             System.out.println("dossier exitant");
         }
-        initializeVegetablePrices();
-        initializeAnimalPrices();
-        initializeAnimalFood();
-        initializeVegetableSellPrices();
+        initializeData();
         loadData();
         loadDataProducts();
         loadBank();
@@ -53,33 +55,32 @@ public class FarmController {
         System.out.println(vegetableInventory);
         System.out.println(vegetableProducts);
     }
-
+    private void initializeData() {
+        vegetablePrices.putAll(Map.of(
+                "Blé", 10, "Mais", 12, "Pomme", 5, "Banane", 7, "Cerise", 50
+        ));
+        vegetableSellPrices.putAll(Map.of(
+                "Blé", 15, "Mais", 17, "Pomme", 10, "Banane", 12, "Cerise", 60
+        ));
+        animalPrices.putAll(Map.of(
+                "Poule", 11, "Vache", 22, "Mouton", 33
+        ));
+        animalSellPrices.putAll(Map.of(
+                "Poule", 11, "Vache", 22, "Mouton", 33
+        ));
+        animalFood.putAll(Map.of(
+                "Poule", "Mais", "Mouton", "Pomme", "Vache", "Blé"
+        ));
+        animalResource.putAll(Map.of(
+                "Poule", "Oeufs", "Mouton", "Laine", "Vache", "Lait"
+        ));
+    }
     public void initialize() {
         if (moneyLabel != null) {
             moneyLabel.setText(("Argent : " + wallet + "€"));
         } else {
             System.out.println("⚠️ moneyLabel est toujours null après injection !");
         }
-    }
-
-    public void initializeVegetablePrices() {
-        vegetablePrices.put("Blé", 10);
-        vegetablePrices.put("Mais", 12);
-        vegetablePrices.put("Pomme", 5);
-        vegetablePrices.put("Banane", 7);
-        vegetablePrices.put("Cerise", 50);
-    }
-
-    public void initializeAnimalFood() {
-        animalFood.put("Poule", "Mais");
-        animalFood.put("Cochon", "Pomme");
-        animalFood.put("Vache", "Blé");
-    }
-
-    public void initializeAnimalPrices() {
-        animalPrices.put("Poule", 11);
-        animalPrices.put("Vache", 22);
-        animalPrices.put("Cochon", 33);
     }
 
     public void buyVegetable(String vegetableName) {
@@ -115,22 +116,6 @@ public class FarmController {
         System.out.println(selectedAnimalBuyButton.getText());
         buyAnimal(selectedAnimalBuyButton.getText());
     }
-
-
-    public void initializeVegetableSellPrices() {
-        vegetableSellPrices.put("Blé", 15);
-        vegetableSellPrices.put("Mais", 17);
-        vegetableSellPrices.put("Pomme", 10);
-        vegetableSellPrices.put("Banane", 12);
-        vegetableSellPrices.put("Cerise", 60);
-    }
-
-    public void initializeAnimalSellPrices() {
-        vegetableSellPrices.put("Vache", 22);
-        vegetableSellPrices.put("Poule", 11);
-        vegetableSellPrices.put("Cochon", 33);
-    }
-
     public void sellVegetable(String vegetableName) {
 
         if (!vegetableSellPrices.containsKey(vegetableName)) {
@@ -158,67 +143,72 @@ public class FarmController {
     }
 
     public void buyAnimal(String animalName) {
-        if (!animalPrices.containsKey(animalName)){
-            System.out.println(animalPrices);
-            System.out.println("Le prix de l'animal " + animalName + " n'existe pas !");
-            System.out.println("existe pas prix animal");
-            return;
-        }
-        int price = animalPrices.get(animalName);
+        if (!animalPrices.containsKey(animalName)) return;
 
+        int price = animalPrices.get(animalName);
         if (wallet >= price) {
             wallet -= price;
-            //System.out.println(animalInventory);
             animalInventory.putIfAbsent(animalName, new Animal(animalName));
             animalInventory.get(animalName).increaseQuantity();
-            System.out.println(animalName + " acheté !");
-            saveToFile();  // Assurez-vous de sauvegarder après l'achat de l'animal.
+            bankInstructions.add("Achat : " + animalName + " : " + price + "€");
+            moneyLabel.setText("Argent : " + wallet + "€");
+            saveToFileBank();
         } else {
             System.out.println("Pas assez d'argent pour acheter " + animalName);
         }
     }
 
-    public void feedAnimal(String animalName) {
-        // Vérification que l'animal existe dans l'inventaire
+    public boolean feedAnimal(String animalName) {
         if (!animalInventory.containsKey(animalName)) {
             System.out.println("Cet animal n'existe pas dans l'inventaire !");
-            return;
+            return false;
         }
 
-        // Vérification que l'animal a de la nourriture associée
         if (!animalFood.containsKey(animalName)) {
             System.out.println("Aucune nourriture définie pour " + animalName);
+            return false;
+        }
+
+        String food = animalFood.get(animalName);
+
+        if (vegetableProducts.containsKey(food) &&  vegetableProducts.get(food).getQuantity() > 0) {
+            Vegetable foodResource = vegetableProducts.get(food);
+            foodResource.lowerQuantity();
+            System.out.println(animalName + " a été nourri avec " + food + " !");
+            saveToFile();
+            return true;
+        } else {
+            System.out.println("Pas assez de " + food + " pour nourrir " + animalName);
+        }
+        return false;
+    }
+
+    public void recoltAnimal(String animalName) {
+        if (!animalInventory.containsKey(animalName)) {
+            System.out.println(" Cet animal n'existe pas dans l'inventaire !");
             return;
         }
 
-        // Récupérer la ressource nécessaire pour nourrir l'animal
-        String food = animalFood.get(animalName);
-
-        // Vérifier s'il y a suffisamment de cette ressource dans l'inventaire
-        if (vegetableProducts.containsKey(food) &&  vegetableProducts.get(food).getQuantity() > 0) {
-            // Nourrir l'animal (réduire la quantité de nourriture)
-            Vegetable foodResource = vegetableProducts.get(food);
-            foodResource.lowerQuantity();  // Réduire la quantité de la ressource alimentaire
-            System.out.println(animalName + " a été nourri avec " + food + " !");
-
-            // Si tu veux, tu peux ajouter une méthode dans la classe Animal pour marquer qu'il a été nourri
-            // animalInventory.get(animalName).setFed(true);
-
-            // Sauvegarder les changements
-            saveToFile(); // Sauvegarder l'état actuel après avoir nourri l'animal
-        } else {
-            // Si il n'y a pas assez de nourriture
-            System.out.println("Pas assez de " + food + " pour nourrir " + animalName);
+        if (!animalResource.containsKey(animalName)) {
+            System.out.println(" Aucune ressource définie pour " + animalName);
+            return;
         }
+
+        String resource = animalResource.get(animalName);
+
+        if (animalProduction.containsKey(animalName)) {
+            Production product = animalProduction.get(animalName);
+            product.increaseQuantity();
+            System.out.println("Récolte réussie : " + resource + " (+1)");
+        } else {
+            Production product = new Production(resource, 3);
+            animalProduction.put(animalName, product);
+            System.out.println(" Nouvelle production enregistrée : " + resource + " (1)");
+        }
+
+        saveToFileProducts();
     }
 
-
-
-//    public void addResource(String resourceName, int quantity) {
-//        System.out.println(resourceName + " produit " + quantity + " unité(s) !");
-//        // Ajout à l’inventaire des ressources (ex : œufs)
-//        saveToFile();
-//    }
 
 
     public void sell(ActionEvent event) {
@@ -294,7 +284,12 @@ public class FarmController {
         try (FileWriter writer = new FileWriter("products.txt")) {
 
             for (Vegetable vegetable : vegetableProducts.values()) {
-                writer.write(vegetable.getName() + " : " + vegetable.getQuantity() + "\n");
+                writer.write("V:" + vegetable.getName() + " : " + vegetable.getQuantity() + "\n");
+            }
+
+            // Sauvegarde des animaux
+            for (Production product : animalProduction.values()) {
+                writer.write("P:" + product.getName() + " : " + product.getQuantity() + "\n");
             }
 //
 //            for (Vegetable vegetable : vegetableInventory.values()) {
@@ -352,9 +347,15 @@ public class FarmController {
 
                     String[] parts = line.split(" : ");
                     if (parts.length == 2) {
-                        String name = parts[0];
+                        String typeAndName = parts[0];
                         int quantity = Integer.parseInt(parts[1]);
-                        vegetableProducts.put(name, new Vegetable(name, quantity));
+                        if (typeAndName.startsWith("V:")) {
+                            String name = typeAndName.substring(2); // Enlève "V:"
+                            vegetableProducts.put(name, new Vegetable(name, quantity));
+                        } else if (typeAndName.startsWith("P:")) {
+                            String name = typeAndName.substring(2); // Enlève "A:"
+                            animalProduction.put(name, new Production(name, quantity));
+                        }
                     }
 
             });

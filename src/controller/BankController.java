@@ -29,7 +29,7 @@ public class BankController {
 
     @FXML
     public void initialize() {
-        // ✅ Associer les colonnes aux propriétés du modèle Transaction
+        // ✅ Associer les colonnes aux propriétés du mo+6+dèle Transaction
         colNom.setCellValueFactory(new PropertyValueFactory<>("name"));
         colPrix.setCellValueFactory(new PropertyValueFactory<>("price"));
         colType.setCellValueFactory(new PropertyValueFactory<>("type"));

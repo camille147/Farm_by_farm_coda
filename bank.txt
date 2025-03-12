@@ -1,4 +1,4 @@
-Wallet:488.0
+Wallet:214.0
 Achat : Mais : 12pièces
 Vente : Blé : 15pièces
 Achat : Pomme : 5pièces
@@ -45,3 +45,18 @@ Achat : Pomme : 5pièces
 Achat : Banane : 7pièces
 Achat : Pomme : 5pièces
 Achat : Blé : 10pièces
+Achat : Mais : 12pièces
+Achat : Pomme : 5pièces
+Achat : Pomme : 5pièces
+Achat : Vache : 22€
+Achat : Vache : 22€
+Achat : Vache : 22€
+Achat : Poule : 11€
+Achat : Poule : 11€
+Achat : Cerise : 50€
+Achat : Blé : 10pièces
+Achat : Pomme : 5pièces
+Achat : Vache : 22€
+Achat : Poule : 11€
+Achat : Vache : 22€
+Achat : Vache : 22€

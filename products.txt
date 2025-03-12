@@ -1,6 +1,8 @@
-Cerise : 5
-Banane : 0
-Poule : 0
-Mais : 2
-Pomme : 1
-Blé : 8
+V:Cerise : 5
+V:Banane : 6
+V:Mais : 3
+V:Pomme : 4
+V:Blé : 1
+P:Oeufs : 4
+P:Laine : 1
+P:Lait : 3
